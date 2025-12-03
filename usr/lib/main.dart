@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:couldai_user_app/screens/home_screen.dart';
 import 'package:couldai_user_app/screens/matching_screen.dart';
 import 'package:couldai_user_app/screens/voice_chat_screen.dart';
 import 'package:couldai_user_app/screens/interests_screen.dart';
+import 'package:couldai_user_app/screens/group_voice_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/interests': (context) => const InterestsScreen(),
         '/matching': (context) => const MatchingScreen(),
         '/voice_chat': (context) => const VoiceChatScreen(),
+        '/group_room': (context) => const GroupVoiceScreen(),
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:couldai_user_app/screens/room_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: IndexedStack(
         index: _selectedIndex,
         children: const [
-          HistoryScreen(),
+          RoomListScreen(), // Replaced History with Rooms for "Voice Chat Room" focus
           MatchTab(),
           ProfileTab(),
         ],
@@ -35,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Reconnect',
+            icon: Icon(Icons.grid_view_rounded),
+            label: 'Rooms',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.mic),
@@ -131,38 +132,6 @@ class MatchTab extends StatelessWidget {
   }
 }
 
-class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Reconnect"),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.grey[800],
-              child: Text("U${index + 1}"),
-            ),
-            title: Text("User ${index + 1}"),
-            subtitle: const Text("Matched 2 hours ago • 5 min talk"),
-            trailing: IconButton(
-              icon: const Icon(Icons.favorite, color: Colors.redAccent),
-              onPressed: () {},
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
 
@@ -199,6 +168,12 @@ class ProfileTab extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
+          ListTile(
+            leading: const Icon(Icons.history),
+            title: const Text("Match History"),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            onTap: () {},
+          ),
           ListTile(
             leading: const Icon(Icons.topic),
             title: const Text("My Interests"),
